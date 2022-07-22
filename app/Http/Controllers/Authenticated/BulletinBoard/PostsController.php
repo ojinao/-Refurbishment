@@ -75,8 +75,12 @@ class PostsController extends Controller
     }
 
     public function subCategoryCreate(Request $request){
+        $request->validate([
+            'sub_category' => 'required|max:100|string|unique:sub_categories',
+            'main_category_id' => 'required|exists:main_categories,id',
+        ]);
         SubCategory::create(['sub_category' => $request->sub_category_name,
-                            'main_category_id' =>$request->sub_category_id,]);
+                            'main_category_id' =>$request->main_category_id,]);
         return redirect()->route('post.input');
     }
 
