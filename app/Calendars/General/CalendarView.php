@@ -41,30 +41,34 @@ class CalendarView{
         $toDay = $this->carbon->copy()->format("Y-m-d");
 
         if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
-          $html[] = '<td class="calendar-td">';
+          $html[] = '<td class="calendar-td" style = "background:gray">';
         }else{
           $html[] = '<td class="calendar-td '.$day->getClassName().'">';
         }
         $html[] = $day->render();
 
-        if(in_array($day->everyDay(), $day->authReserveDay())){
-          $reservePart = $day->authReserveDate($day->everyDay())->first()->setting_part;
-          if($reservePart == 1){
-            $reservePart = "リモ1部";
-          }else if($reservePart == 2){
-            $reservePart = "リモ2部";
-          }else if($reservePart == 3){
-            $reservePart = "リモ3部";
-          }
-          if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
-            $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px"></p>';
-            $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
-          }else{
-            $html[] = '<button type="submit" class="btn btn-danger p-0 w-75" name="delete_date" style="font-size:12px" value="'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'">'. $reservePart .'</button>';
-            $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
-          }
+        if ($startDay <= $day->everyDay() && $toDay >= $day->everyDay()) {
+          $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px">受付終了</p>';
         }else{
-          $html[] = $day->selectPart($day->everyDay());
+          if(in_array($day->everyDay(), $day->authReserveDay()) ){
+            $reservePart = $day->authReserveDate($day->everyDay())->first()->setting_part;
+            if($reservePart == 1){
+              $reservePart = "リモ1部";
+            }else if($reservePart == 2){
+              $reservePart = "リモ2部";
+            }else if($reservePart == 3){
+              $reservePart = "リモ3部";
+            }
+            if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
+              $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px"></p>';
+              $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
+            }else{
+              $html[] = '<button type="submit" class="btn btn-danger p-0 w-75" name="delete_date" style="font-size:12px" value="'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'">'. $reservePart .'</button>';
+              $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
+            }
+          }else{
+            $html[] = $day->selectPart($day->everyDay());
+          }
         }
         $html[] = $day->getDate();
         $html[] = '</td>';
