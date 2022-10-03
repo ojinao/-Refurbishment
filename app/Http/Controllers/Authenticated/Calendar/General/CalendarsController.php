@@ -21,10 +21,14 @@ class CalendarsController extends Controller
     public function reserve(Request $request){
         DB::beginTransaction();
         try{
-            $getPart = $request->getPart;
             $getDate = $request->getData;
+            $getPart = $request->getPart;
             $reserveDays = array_filter(array_combine($getDate, $getPart));
             foreach($reserveDays as $key => $value){
+                ReserveSettings::create([
+                    'setting_reserve' => $key,
+                    'setting_part' => $value,
+                ]);
                 $reserve_settings = ReserveSettings::where('setting_reserve', $key)->where('setting_part', $value)->first();
                 $reserve_settings->decrement('limit_users');
                 $reserve_settings->users()->attach(Auth::id());

@@ -15,4 +15,23 @@
     </div>
   </div>
 </div>
+<!-- modal -->
+<div class="modal js-modal_delete">
+  <div class="modal__bg js-modal-close"></div>
+  <div class="modal__content">
+    <div class="w-100">
+      <div class="reserve w-50 m-auto">
+        <p>予約日 : <label class=modal-reserve-day></label></p>
+        <p>時間 : <label class=modal-reserve-part></label></p>
+        <p>上記の予約をキャンセルしてもよろしいですか？</p>
+      </div>
+      <div class="w-50 m-auto edit-modal-btn d-flex">
+        <a class="js-modal-close btn btn-primary d-inline-block" href="">閉じる</a>
+        <input type="hidden" class="delete-modal-hidden" name="post_id" value="">
+        <input type="submit" class="btn btn-danger d-block" value="キャンセル">
+      </div>
+    </div>
+    {{ csrf_field() }}
+  </div>
+</div>
 @endsection
