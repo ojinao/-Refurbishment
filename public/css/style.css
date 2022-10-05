@@ -89,7 +89,9 @@ li{
     transform: translate(-50%,-50%);
     width: 60%;
 }
-
+.post__edit{
+  height: 35px;
+}
 /* 掲示板 */
 .sub_categories{
   display:none;

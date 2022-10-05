@@ -129,8 +129,8 @@ return [
     */
 
     'custom' => [
-        '属性名' => [
-            'ルール名' => 'カスタムメッセージ',
+        'comment' => [
+            'required' => ':attributeを入力してください'
         ],
     ],
 
@@ -145,6 +145,8 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'comment' => 'コメント',
+    ],
 
 ];
