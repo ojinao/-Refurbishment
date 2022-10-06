@@ -25,10 +25,6 @@ class CalendarsController extends Controller
             $getPart = $request->getPart;
             $reserveDays = array_filter(array_combine($getDate, $getPart));
             foreach($reserveDays as $key => $value){
-                ReserveSettings::create([
-                    'setting_reserve' => $key,
-                    'setting_part' => $value,
-                ]);
                 $reserve_settings = ReserveSettings::where('setting_reserve', $key)->where('setting_part', $value)->first();
                 $reserve_settings->decrement('limit_users');
                 $reserve_settings->users()->attach(Auth::id());
@@ -41,10 +37,18 @@ class CalendarsController extends Controller
     }
 
     public function delete(Request $request){
-        dd($request);
-        $reserve_day = ReserveSettings::where();
-        // $reserve_part = ;
-        ReserveSettings::find($request->reserve_id)->delete();
+        DB::beginTransaction();
+        try {
+            $reserve_settings_id = $request->reserve_id;
+            $user_id = Auth::id();
+            $delete_reserve = ReserveSettings::where('id', $reserve_settings_id)->first();
+            $delete_reserve->increment('limit_users');
+            $delete_reserve->users()->detach($user_id);
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+        }
         return back();
     }
 }

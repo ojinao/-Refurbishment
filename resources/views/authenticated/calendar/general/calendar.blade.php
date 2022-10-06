@@ -21,8 +21,8 @@
   <div class="modal__content">
     <div class="w-100">
       <div class="reserve w-50 m-auto">
-        <p>予約日 : <label class="modal-reserve-day" name="reserve_day"></label></p>
-        <p>時間 : <label class="modal-reserve-part" name="reserve_part"></label></p>
+        <p>予約日 : <label class="modal-reserve-day"></label></p>
+        <p>時間 : <label class="modal-reserve-part"></label></p>
         <p>上記の予約をキャンセルしてもよろしいですか？</p>
       </div>
       <div class="w-50 m-auto edit-modal-btn d-flex">

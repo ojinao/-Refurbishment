@@ -70,7 +70,9 @@ class CalendarView{
           }else{
             $html[] = $day->selectPart($day->everyDay());
           }
-          $html[] = $day->getDate();
+        if ($toDay <= $day->everyDay()) {
+          $html[] = $day->getDate($day->everyDay());
+        }
         $html[] = '</td>';
       }
       $html[] = '</tr>';
