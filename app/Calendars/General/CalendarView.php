@@ -21,13 +21,13 @@ class CalendarView{
     $html[] = '<table class="table">';
     $html[] = '<thead>';
     $html[] = '<tr>';
-    $html[] = '<th>月</th>';
-    $html[] = '<th>火</th>';
-    $html[] = '<th>水</th>';
-    $html[] = '<th>木</th>';
-    $html[] = '<th>金</th>';
-    $html[] = '<th>土</th>';
-    $html[] = '<th>日</th>';
+    $html[] = '<th style ="border:1px solid #dee2e6">月</th>';
+    $html[] = '<th style ="border:1px solid #dee2e6">火</th>';
+    $html[] = '<th style ="border:1px solid #dee2e6">水</th>';
+    $html[] = '<th style ="border:1px solid #dee2e6">木</th>';
+    $html[] = '<th style ="border:1px solid #dee2e6">金</th>';
+    $html[] = '<th style ="border:1px solid #dee2e6">土</th>';
+    $html[] = '<th style ="border:1px solid #dee2e6">日</th>';
     $html[] = '</tr>';
     $html[] = '</thead>';
     $html[] = '<tbody>';
@@ -41,9 +41,9 @@ class CalendarView{
         $toDay = $this->carbon->copy()->format("Y-m-d");
 
         if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
-          $html[] = '<td class="calendar-td" style = "background:gray">';
+          $html[] = '<td class="calendar-td" style = "background:gray; border:1px solid #dee2e6">';
         }else{
-          $html[] = '<td class="calendar-td '.$day->getClassName().'">';
+          $html[] = '<td class="calendar-td '.$day->getClassName(). '"  style ="border:1px solid #dee2e6">';
         }
         $html[] = $day->render();
 
@@ -59,7 +59,7 @@ class CalendarView{
               $reservePart = "リモ3部";
             }
             if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
-              $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px">'.$reservePart.'</p>';
+              $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px border:1px solid #dee2e6">'.$reservePart.'</p>';
               $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
             }else{
               $html[] = '<button type="submit" class="btn btn-danger p-0 w-75 delete_modal_open" name="delete_date" style="font-size:12px" value="'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'" reserve_part='. $reservePart .' reserve_day='.$reserveDay. ' reserve_id='.$reserveId.'>'. $reservePart .'</button>';

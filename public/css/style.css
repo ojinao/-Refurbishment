@@ -15,16 +15,43 @@ li{
 
 /* サイドバー */
 .sidebar{
-  width:150px;
+  width:160px;
   height:100vh;
   background-color:#03AAD2;
   font-weight:bold;
+  position: fixed;
+}
+.sidebar a:hover{
+  text-decoration: none;
 }
 .main-container{
   width:100%;
+  margin-left: 150px;
+}
+.main-container a:hover{
+  text-decoration: none;
 }
 .sidebar p a{
   color:#FFF;
+  padding-left: 15px;
+}
+.sidebar p {
+  width: 160px;;
+  height: 40px;
+  line-height: 40px;
+  transition: .3s;
+}
+.sidebar p:hover {
+  top: -3px;
+  box-shadow: 0 10px 5px rgba(0, 0, 0, 0.3);
+  transform: translateY(-4px);
+  background-color: #1E90FF;
+}
+.sidebar p:checked {
+  background-color: #494949;
+}
+.sidebar p:first-of-type{
+  margin-top: 3rem;
 }
 
 /* トップページ */
@@ -129,7 +156,24 @@ li{
 }.main_category {
   color: gray;
 }
-
+.other_area{
+  background-color: white;
+  border-radius: 10px;
+  margin-right: 50px;
+}
+.other_area_inner{
+  background-color: #eee;
+  border-radius: 10px;
+  height: 100%;
+}
+.other_area_inner div{
+  margin-bottom: 1rem;
+}
+.other_area_inner .category_btn:hover {
+  top: -3px;
+  box-shadow: 0 10px 5px rgba(0, 0, 0, 0.3);
+  transform: translateY(-4px);
+}
 /* 掲示板 詳細画面 */
 .contributor{
   font-size:12px;
@@ -181,6 +225,7 @@ li{
 .category_area{
   background:#FFF;
   border-radius:10px;
+  height: 100px;
 }
 .category_box{
   border-radius:5px;
@@ -219,8 +264,13 @@ li{
   font-size:12px;
 }
 .one_person{
-  width:250px;
-  height:250px;
+  width:230px;
+  height:230px;
+  margin: 5px;
+  background-color: aquamarine;
+}
+.one_person div{
+  margin-left: 15px;
 }
 .search_conditions span{
   cursor:pointer;
@@ -236,4 +286,14 @@ li{
 }
 .subject_inner{
   display:none;
+}
+.search_area{
+  background-color: white;
+  margin: 10px auto;
+}
+.search_area_item{
+  margin: 10px;
+}
+.search_area_item div{
+  margin-bottom: 1rem;
 }
