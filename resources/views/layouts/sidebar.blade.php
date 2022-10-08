@@ -20,15 +20,15 @@
   <div class="d-flex">
     <div class="sidebar">
       @section('sidebar')
-      <p><a href="{{ route('top.show') }}"> <i class="far fa-angry">トップ</i></a></p>
+      <p @if (strpos( url()->current() ,"top") !==false)class="active" @endif><a href="{{ route('top.show') }}"> <i class="far fa-angry">トップ</i></a></p>
       <p><a href="/logout"> <i class="fab fa-grunt"></i>ログアウト</a></p>
-      <p><a href="{{ route('calendar.general.show',['user_id' => Auth::id()]) }}"> <i class="far fa-grin-tongue-wink"></i>スクール予約</a></p>
+      <p @if (url()->current() === "http://127.0.0.1:8000"."/"."calendar"."/".Auth::id())class="active" @endif><a href="{{ route('calendar.general.show',['user_id' => Auth::id()]) }}"> <i class="far fa-grin-tongue-wink"></i>スクール予約</a></p>
       @can('admin')
-      <p><a href="{{ route('calendar.admin.show',['user_id' => Auth::id()]) }}"> <i class="far fa-id-badge"></i>スクール予約確認</a></p>
-      <p><a href="{{ route('calendar.admin.setting',['user_id' => Auth::id()]) }}"> <i class="fas fa-poo"></i>スクール枠登録</a></p>
+      <p @if (strpos( url()->current() ,"calendar"."/".Auth::id()."/"."admin") !==false)class="active" @endif><a href="{{ route('calendar.admin.show',['user_id' => Auth::id()]) }}"> <i class="far fa-id-badge"></i>スクール予約確認</a></p>
+      <p @if (strpos( url()->current() ,"setting") !==false)class="active" @endif><a href="{{ route('calendar.admin.setting',['user_id' => Auth::id()]) }}"> <i class="fas fa-poo"></i>スクール枠登録</a></p>
       @endcan
-      <p><a href="{{ route('post.show') }}"> <i class="fas fa-star"></i>掲示板</a></p>
-      <p><a href="{{ route('user.show') }}"><i class="fas fa-child"></i>ユーザー検索</a></p>
+      <p @if (strpos( url()->current() ,"bulletin_board") !==false)class="active" @endif><a href="{{ route('post.show') }}"> <i class="fas fa-star"></i>掲示板</a></p>
+      <p @if (strpos( url()->current() ,"show") !==false)class="active" @endif><a href="{{ route('user.show') }}"><i class="fas fa-child"></i>ユーザー検索</a></p>
       @show
     </div>
     <div class="main-container">
