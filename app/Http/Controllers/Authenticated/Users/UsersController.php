@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use Gate;
 use App\Models\Users\User;
+use App\Models\images\Image;
 use App\Models\Users\Subjects;
 use App\Searchs\DisplayUsers;
 use App\Searchs\SearchResultFactories;
@@ -37,5 +38,40 @@ class UsersController extends Controller
         $user = User::findOrFail($request->user_id);
         $user->subjects()->sync($request->subjects);
         return redirect()->route('user.profile', ['id' => $request->user_id]);
+    }
+
+    public function image(Request $request){
+        $imgs = Image::get();
+        return view('authenticated.users.image', compact('imgs'));
+    }
+
+    public function create(Request $request){
+        // 画像フォームでリクエストした画像を取得
+        $img = $request->file('image');
+        // storage > public > img配下に画像が保存される
+        if (isset($img)) {
+            // storage > public > img配下に画像が保存される
+            $path = $img->store('img', 'public');
+            // store処理が実行できたらDBに保存処理を実行
+            if ($path) {
+                Image::create([
+                    'image' => $path,
+                ]);
+            }
+        }
+        return redirect()->route('image');
+    }
+
+    public function imgDelete($id){
+        $image = Image::where('id', $id)->first();
+        // 商品画像ファイルへのパスを取得
+        $path = $image->image;
+        // ファイルが登録されていれば削除
+        if ($path !== '') {
+            \Storage::disk('public')->delete($path);
+        }
+        // データベースからデータを削除
+        $image->delete();
+        return redirect()->route('image');
     }
 }

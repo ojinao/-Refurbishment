@@ -58,6 +58,9 @@ Route::group(['middleware' => 'auth'], function(){
             Route::get('/show/users', 'UsersController@showUsers')->name('user.show');
             Route::get('/user/profile/{id}', 'UsersController@userProfile')->name('user.profile');
             Route::post('/user/profile/edit', 'UsersController@userEdit')->name('user.edit');
+            Route::get('/images', 'UsersController@image')->name('image');
+            Route::post('/images/create', 'UsersController@create')->name('image.create');
+            Route::post('/images/delete/{id}','UsersController@imgDelete')->name('image.delete');
         });
     });
 });

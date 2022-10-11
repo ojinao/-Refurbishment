@@ -29,6 +29,7 @@
       @endcan
       <p @if (strpos( url()->current() ,"bulletin_board") !==false)class="active" @endif><a href="{{ route('post.show') }}"> <i class="fas fa-star"></i>掲示板</a></p>
       <p @if (strpos( url()->current() ,"show") !==false)class="active" @endif><a href="{{ route('user.show') }}"><i class="fas fa-child"></i>ユーザー検索</a></p>
+      <p @if (strpos( url()->current() ,"images") !==false)class="active" @endif><a href="{{route('image')}}"><i class="fas fa-child"></i>画像</a></p>
       @show
     </div>
     <div class="main-container">
