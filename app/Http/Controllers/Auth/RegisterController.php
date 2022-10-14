@@ -13,6 +13,8 @@ use DB;
 use App\Http\Requests\RegisterRequest;
 
 use App\Models\Users\Subjects;
+use Illuminate\Support\Facades\Mail; //追記
+use App\Mail\RegisterMail; //追記
 
 class RegisterController extends Controller
 {
@@ -82,6 +84,7 @@ class RegisterController extends Controller
             ]);
             $user = User::findOrFail($user_get->id);
             $user->subjects()->attach($subjects);
+            Mail::send(new RegisterMail($request->over_name. $request->under_name, $request->mail_address));
             DB::commit();
             return view('auth.login.login');
         }catch(\Exception $e){
