@@ -17,7 +17,6 @@ function show(data) {
   // console.log(data);
   var Links = data.query.backlinks;
   Links.forEach(Link => {
-    createDiv>wiki(Link.title);
-
+  createDiv(Link.title).style('margin-left', '200px');
   });
 }
