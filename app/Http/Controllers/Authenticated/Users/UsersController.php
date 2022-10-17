@@ -74,4 +74,9 @@ class UsersController extends Controller
         $image->delete();
         return redirect()->route('image');
     }
+
+    public function wikiShow(){
+
+        return view('authenticated.wiki.wiki');
+    }
 }

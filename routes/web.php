@@ -61,6 +61,7 @@ Route::group(['middleware' => 'auth'], function(){
             Route::get('/images', 'UsersController@image')->name('image');
             Route::post('/images/create', 'UsersController@create')->name('image.create');
             Route::post('/images/delete/{id}','UsersController@imgDelete')->name('image.delete');
+            Route::get('/wiki', 'UsersController@wikiShow')->name('wiki.show');
         });
     });
 });
