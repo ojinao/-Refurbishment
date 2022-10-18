@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Ajax;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Users\Message;
+use App\Events\MessageCreated;
 
 class ChatController extends Controller
 {
@@ -17,8 +18,9 @@ class ChatController extends Controller
     public function create(Request $request)
     { // メッセージを登録
 
-        Message::create([
+        $message = Message::create([
             'body' => $request->message
         ]);
+        event(new MessageCreated($message));
     }
 }

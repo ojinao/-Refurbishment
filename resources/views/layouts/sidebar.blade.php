@@ -48,7 +48,6 @@
   <script src="{{ asset('js/user_search.js') }}" rel="stylesheet"></script>
   <script src="{{ asset('js/calendar.js') }}" rel="stylesheet"></script>
   <script src="{{ asset('js/sketch.js') }}" rel="stylesheet"></script>
-  <script src="/js/app.js"></script>
 </body>
 
 </html>
