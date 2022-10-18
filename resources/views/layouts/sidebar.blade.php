@@ -14,8 +14,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Oswald:wght@200&display=swap" rel="stylesheet">
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/p5@0.10.2/lib/p5.js"></script>
-  <script src="sketch.js"></script>
+  <!-- API wiki検索のjs -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/p5@0.10.2/lib/p5.js"></script>
+  <script src="sketch.js"></script> -->
 </head>
 
 <body class="all_content">
@@ -33,6 +34,7 @@
       <p @if (strpos( url()->current() ,"show") !==false)class="active" @endif><a href="{{ route('user.show') }}"><i class="fas fa-child"></i>ユーザー検索</a></p>
       <p @if (strpos( url()->current() ,"images") !==false)class="active" @endif><a href="{{route('image')}}"><i class="fas fa-child"></i>画像</a></p>
       <p @if (strpos( url()->current() ,"wiki") !==false)class="active" @endif><a href="{{route('wiki.show')}}"><i class="fas fa-child"></i>wiki検索</a></p>
+      <p @if (strpos( url()->current() ,"chat") !==false)class="active" @endif><a href="{{route('chat.show')}}"><i class="fas fa-child"></i>チャット</a></p>
 
       @show
     </div>
@@ -46,6 +48,7 @@
   <script src="{{ asset('js/user_search.js') }}" rel="stylesheet"></script>
   <script src="{{ asset('js/calendar.js') }}" rel="stylesheet"></script>
   <script src="{{ asset('js/sketch.js') }}" rel="stylesheet"></script>
+  <script src="/js/app.js"></script>
 </body>
 
 </html>

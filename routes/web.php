@@ -62,6 +62,11 @@ Route::group(['middleware' => 'auth'], function(){
             Route::post('/images/create', 'UsersController@create')->name('image.create');
             Route::post('/images/delete/{id}','UsersController@imgDelete')->name('image.delete');
             Route::get('/wiki', 'UsersController@wikiShow')->name('wiki.show');
+            Route::get('/chat', 'UsersController@chatShow')->name('chat.show');
         });
+    });
+    Route::namespace('Ajax')->group(function () {
+        Route::get('ajax/chat', 'ChatController@index'); // メッセージ一覧を取得
+        Route::post('ajax/chat', 'ChatController@create'); // チャット登録
     });
 });

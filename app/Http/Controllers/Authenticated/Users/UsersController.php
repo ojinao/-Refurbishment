@@ -68,7 +68,7 @@ class UsersController extends Controller
         $path = $image->image;
         // ファイルが登録されていれば削除
         if ($path !== '') {
-            \Storage::disk('public')->delete($path);
+            Storage::disk('public')->delete($path);
         }
         // データベースからデータを削除
         $image->delete();
@@ -78,5 +78,9 @@ class UsersController extends Controller
     public function wikiShow(){
 
         return view('authenticated.wiki.wiki');
+    }
+
+    public function chatShow(){
+        return view('authenticated.users.chat');
     }
 }
