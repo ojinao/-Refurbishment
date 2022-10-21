@@ -12,15 +12,18 @@
     <span v-text="m.body"></span>
   </div>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.min.js"></script>
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.min.js"></script>
+<!-- <script src="{{ asset('js/app.js') }}" ></script> -->
+
+
 <script>
   new Vue({
     el: '#chat',
     data: {
       message: '',
-      messages: []
+      messages: [],
     },
 
     methods: {
@@ -36,7 +39,6 @@
           });
       },
       getMessages() {
-
         const url = '/ajax/chat';
         axios.get(url)
           .then((response) => {

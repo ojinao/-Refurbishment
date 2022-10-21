@@ -17,7 +17,7 @@ class ChatController extends Controller
 
     public function create(Request $request)
     { // メッセージを登録
-
+        dd($request->message);
         $message = Message::create([
             'body' => $request->message
         ]);

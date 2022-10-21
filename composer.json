@@ -13,6 +13,7 @@
         "fideloper/proxy": "^4.4",
         "laravel/framework": "^6.20.26",
         "laravel/tinker": "^2.5",
+        "predis/predis": "^2.0",
         "pusher/pusher-php-server": "^7.2"
     },
     "require-dev": {
